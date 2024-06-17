@@ -1,0 +1,44 @@
+name: Release new version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  access-private-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v4
+
+    - name: Checkout private repository
+      uses: actions/checkout@v4
+      with:
+        repository: JuckZ/vault
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: vault
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run script to read config
+      run: |
+        rm providers.json
+        cp vault/sing-box-subscribe/providers.json providers.json
+        python main.py --template_index=0
+        cat config.json
+    
+    # TODO 发布，如何验证身份？？
+    # - name: Release new version
+    #   uses: softprops/action-gh-release@v1
+    #   with:
+    #     files: providers.json

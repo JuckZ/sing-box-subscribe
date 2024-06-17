@@ -1,8 +1,7 @@
 {
   "log": {
     "disabled": false,
-    "level": "info",
-    "output": "box.log",
+    "level": "debug",
     "timestamp": true
   },
   "experimental": {
@@ -27,11 +26,6 @@
       "inet6_range": "fc00::/18"
     },
     "servers": [
-      {
-        "tag": "dns-trick-direct",
-        "address": "https://sky.rethinkdns.com/",
-        "detour": "direct-fragment"
-      },
       {
         "tag": "dns_direct",
         "address": "h3://dns.alidns.com/dns-query",
@@ -160,20 +154,6 @@
         "server": "google"
       }
     ],
-    "static_ips": {
-      "sky.rethinkdns.com": [
-        "2606:4700:3032::6815:452c",
-        "2606:4700:3031::ac43:cc54",
-        "104.21.69.44",
-        "172.67.204.84",
-        "104.18.202.232",
-        "104.18.203.232",
-        "2606:4700:3030::6815:533e",
-        "2606:4700:3030::ac43:d6f6",
-        "104.21.83.62",
-        "172.67.214.246"
-      ]
-    },
     "final": "google",
     "independent_cache": true,
     "strategy": "prefer_ipv4"
@@ -183,7 +163,7 @@
     "server": "time.apple.com",
     "server_port": 123,
     "interval": "30m",
-    "detour": "DIRECT"
+    "detour": "direct"
   },
   "inbounds": [
     {
@@ -609,7 +589,7 @@
           ]
         }
       ],
-      "url": "http://cp.cloudflare.com/",
+      "url": "http://www.gstatic.com/generate_204",
       "interval": "10m0s",
       "idle_timeout": "1h40m0s",
       "tolerance": 50
@@ -617,15 +597,6 @@
     {
       "type": "direct",
       "tag": "direct"
-    },
-    {
-      "type": "direct",
-      "tag": "direct-fragment",
-      "tls_fragment": {
-        "enabled": true,
-        "size": "1-500",
-        "sleep": "0-500"
-      }
     },
     {
       "type": "dns",
@@ -1024,7 +995,7 @@
         "type": "remote",
         "tag": "gfwlist",
         "format": "binary",
-        "url": "https://fastly.jsdelivr.net/gh/gfw-list/gfwlist@files/sing-box/gfwlist.srs"
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/JuckZ/sing-box-geosite/main/rule/gfw.srs"
       },
       {
         "type": "remote",
