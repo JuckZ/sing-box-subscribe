@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: git@github.com:JuckZ/one-network.git
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.READ_PRIVATE_TOKEN }}
         path: services
 
     - name: Set up Python
