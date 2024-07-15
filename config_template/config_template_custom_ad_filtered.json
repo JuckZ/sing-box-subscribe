@@ -132,6 +132,13 @@
       },
       {
         "geosite": [
+          "category-ads-all"
+        ],
+        "server": "block",
+        "disable_cache": true
+      },
+      {
+        "geosite": [
           "geolocation-!cn"
         ],
         "query_type": [
@@ -621,6 +628,10 @@
           }
         ],
         "outbound": "dns-out"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "outbound": "AdBlock"
       },
       {
         "clash_mode": "direct",
