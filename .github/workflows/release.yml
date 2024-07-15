@@ -17,9 +17,9 @@ jobs:
     - name: Checkout private repository
       uses: actions/checkout@v4
       with:
-        repository: JuckZ/one-network
+        repository: JuckZ/vault
         token: ${{ secrets.READ_PRIVATE_TOKEN }}
-        path: services
+        path: vault
 
     - name: Set up Python
       uses: actions/setup-python@v4
