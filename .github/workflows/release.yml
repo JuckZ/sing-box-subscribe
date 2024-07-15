@@ -17,7 +17,7 @@ jobs:
     - name: Checkout private repository
       uses: actions/checkout@v4
       with:
-        repository: JuckZ/one-network
+        repository: git@github.com:JuckZ/one-network.git
         token: ${{ secrets.GITHUB_TOKEN }}
         path: services
 
