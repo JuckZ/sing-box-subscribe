@@ -36,10 +36,9 @@ jobs:
         rm providers.json
         cp vault/sing-box-subscribe/providers.json providers.json
         python main.py --template_index=0
-        cat config.json
     
     # TODO 发布，如何验证身份？？
-    # - name: Release new version
-    #   uses: softprops/action-gh-release@v1
-    #   with:
-    #     files: providers.json
+    - name: Release new version
+      uses: softprops/action-gh-release@v1
+      with:
+        files: config_template_custom.json
