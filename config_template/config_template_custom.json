@@ -13,19 +13,9 @@
       "external_ui_download_detour": "direct",
       "secret": "CHANGE_ME",
       "default_mode": "rule"
-    },
-    "cache_file": {
-      "enabled": true,
-      "path": "clash.db",
-      "store_fakeip": true
     }
   },
   "dns": {
-    "fakeip": {
-      "enabled": false,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "servers": [
       {
         "tag": "dns_direct",
@@ -48,10 +38,6 @@
         "tag": "tx",
         "address": "https://120.53.53.53/dns-query",
         "detour": "direct"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -117,16 +103,6 @@
           "geoip-netflix"
         ],
         "server": "google"
-      },
-      {
-        "geosite": [
-          "geolocation-!cn"
-        ],
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "dns_fakeip"
       },
       {
         "geosite": [
